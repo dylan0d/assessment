@@ -1,4 +1,22 @@
 {
   "name": "assessment",
-  "packageManager": "yarn@4.6.0"
+  "version": "1.0.0",
+  "main": "index.js",
+  "packageManager": "yarn@4.6.0",
+  "scripts": {
+    "build": "tsc --project ./",
+    "start:dev": "nodemon src/server.ts",
+    "start:prod": "node dist/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.6",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
 }
