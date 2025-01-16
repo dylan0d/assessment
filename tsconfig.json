@@ -10,7 +10,8 @@
     "baseUrl": ".",
     "paths": {
       "*": ["node_modules/*"]
-    }
+    },
+    "types": ["jest"]
   },
   "include": ["src/**/*"]
 }
