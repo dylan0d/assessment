@@ -17,19 +17,21 @@ const middlewares = {
     const { long, lat, limit } = req.query;
     let passedValidation = true;
     if (!lat || !long) {
+      passedValidation = false;
       res.status(400).send("long and lat are required parameters");
-      passedValidation = false;
     }
-    if ((passedValidation && !isFloat(long)) || !isFloat(lat)) {
-      res.status(400).send("long and lat must be integers");
-      passedValidation = false;
-    }
-    if (passedValidation && limit) {
-      if (!isInt(limit) || parseFloat(limit) < 1) {
-        res.status(400).send("limit must be a positive integer");
+    if (passedValidation) {
+      if(!isFloat(long) || !isFloat(lat)) {
         passedValidation = false;
+        res.status(400).send("long and lat must be numbers");
       }
-    }
+      if (passedValidation && limit) {
+        if (!isInt(limit) || parseFloat(limit) < 1) {
+          passedValidation = false;
+          res.status(400).send("limit must be a positive integer");
+        }
+      }
+    } 
 
     if (passedValidation) {
       next();
